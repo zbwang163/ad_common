@@ -11,10 +11,10 @@ type BizError struct {
 }
 
 var (
-	MysqlError    = errorType{1000, "读写mysql错误"}
-	RedisError    = errorType{1001, "读写redis错误"}
-	ResourceError = errorType{1002, "请求资源不存在或无权限"}
-	ParamError    = errorType{1003, "参数错误"}
+	mysqlError    = errorType{1000, "读写mysql错误"}
+	redisError    = errorType{1001, "读写redis错误"}
+	resourceError = errorType{1002, "请求资源不存在或无权限"}
+	paramError    = errorType{1003, "参数错误"}
 )
 
 func NewMysqlError(err error) *BizError {
@@ -22,7 +22,7 @@ func NewMysqlError(err error) *BizError {
 	if err != nil {
 		errMsg = err.Error()
 	}
-	return &BizError{MysqlError, errMsg}
+	return &BizError{mysqlError, errMsg}
 }
 
 func NewRedisError(err error) *BizError {
@@ -30,7 +30,7 @@ func NewRedisError(err error) *BizError {
 	if err != nil {
 		errMsg = err.Error()
 	}
-	return &BizError{RedisError, errMsg}
+	return &BizError{redisError, errMsg}
 }
 
 func NewResourceError(err error) *BizError {
@@ -38,7 +38,7 @@ func NewResourceError(err error) *BizError {
 	if err != nil {
 		errMsg = err.Error()
 	}
-	return &BizError{ResourceError, errMsg}
+	return &BizError{resourceError, errMsg}
 }
 
 func NewParamError(err error) *BizError {
@@ -46,5 +46,5 @@ func NewParamError(err error) *BizError {
 	if err != nil {
 		errMsg = err.Error()
 	}
-	return &BizError{ParamError, errMsg}
+	return &BizError{paramError, errMsg}
 }

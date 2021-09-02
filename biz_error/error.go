@@ -15,6 +15,7 @@ var (
 	redisError    = errorType{1001, "读写redis错误"}
 	resourceError = errorType{1002, "请求资源不存在或无权限"}
 	paramError    = errorType{1003, "参数错误"}
+	rpcError      = errorType{1004, "rpc调用失败"}
 )
 
 func NewMysqlError(err error) *BizError {
@@ -47,4 +48,12 @@ func NewParamError(err error) *BizError {
 		errMsg = err.Error()
 	}
 	return &BizError{paramError, errMsg}
+}
+
+func NewRpcError(err error) *BizError {
+	var errMsg string
+	if err != nil {
+		errMsg = err.Error()
+	}
+	return &BizError{rpcError, errMsg}
 }

@@ -7,7 +7,7 @@ type errorType struct {
 
 type BizError struct {
 	errorType
-	Error string
+	ErrorMsg string
 }
 
 var (
